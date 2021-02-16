@@ -1,0 +1,140 @@
+<div class="example-container">
+  <div class="form-container">
+    <form [formGroup]="form" (submit)="submit()">
+      <!-- Bank -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Bank </mat-label>
+        <input matInput formControlName="bank" required />
+        <mat-error
+          *ngIf="form.controls.bank.touched && form.controls.bank.invalid"
+        >
+          <span *ngIf="form.controls.bank.errors.required"
+            >This field is mandatory.</span
+          >
+        </mat-error>
+        <mat-icon matSuffix>account_balance</mat-icon>
+      </mat-form-field>
+      <!-- Account Number -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Account Number </mat-label>
+        <input matInput formControlName="acNo" required />
+        <mat-error
+          *ngIf="form.controls.acNo.touched && form.controls.acNo.invalid"
+        >
+          <span *ngIf="form.controls.acNo.errors.required"
+            >This field is mandatory.</span
+          >
+        </mat-error>
+        <mat-icon matSuffix>credit_card</mat-icon>
+      </mat-form-field>
+      <!-- First Name -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> First Name </mat-label>
+        <input matInput formControlName="fName" required />
+        <mat-error
+          *ngIf="form.controls.fName.touched && form.controls.fName.invalid"
+        >
+          <span *ngIf="form.controls.fName.errors.required"
+            >This field is mandatory.</span
+          >
+        </mat-error>
+        <mat-icon matSuffix>person</mat-icon>
+      </mat-form-field>
+      <!-- Second Name -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Second Name </mat-label>
+        <input matInput formControlName="sName" />
+        <mat-icon matSuffix>supervisor_account</mat-icon>
+      </mat-form-field>
+      <!-- Starting Date -->
+      <mat-form-field class="form-field form-field-half" appearance="outline">
+        <mat-label> Starting Date </mat-label>
+        <input
+          matInput
+          formControlName="sDate"
+          [matDatepicker]="picker"
+          required
+        />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error
+          *ngIf="form.controls.sDate.touched && form.controls.sDate.invalid"
+        >
+          <span *ngIf="form.controls.sDate.errors.required"
+            >This field is mandatory.</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <!-- Maturity Date -->
+      <mat-form-field class="form-field form-field-half" appearance="outline">
+        <mat-label> Maturity Date </mat-label>
+        <input
+          matInput
+          formControlName="mDate"
+          [matDatepicker]="picker2"
+          required
+        /><mat-datepicker-toggle matSuffix [for]="picker2">
+          <mat-icon matDatepickerToggleIcon
+            >event</mat-icon
+          ></mat-datepicker-toggle
+        >
+        <mat-datepicker #picker2></mat-datepicker>
+        <mat-error
+          *ngIf="form.controls.mDate.touched && form.controls.mDate.invalid"
+        >
+          <span *ngIf="form.controls.mDate.errors.required"
+            >This field is mandatory.</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <!-- Amount -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Amount </mat-label>
+        <input matInput formControlName="amount" type="tel" />
+        <mat-icon matSuffix>account_balance_wallet</mat-icon>
+      </mat-form-field>
+      <!-- Percentage -->
+      <mat-form-field class="form-field form-field-half" appearance="outline">
+        <mat-label> Percentage </mat-label>
+        <input matInput type="tel" formControlName="percentage" />
+        <mat-icon matSuffix>point_of_sale</mat-icon>
+      </mat-form-field>
+      <!-- Interest -->
+      <mat-form-field class="form-field form-field-half" appearance="outline">
+        <mat-label> Interest </mat-label>
+        <input type="tel" matInput formControlName="interest" />
+
+        <mat-icon matSuffix>money</mat-icon>
+      </mat-form-field>
+      <!-- Type -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Type </mat-label>
+        <mat-select formControlName="type" required>
+          <mat-option value="Monthly">Monthly</mat-option>
+          <mat-option value="Quarterly">Quarterly</mat-option>
+          <mat-option value="Yearly">Yearly</mat-option>
+          <mat-option value="Cumulative">Cumulative</mat-option>
+        </mat-select>
+        <mat-error
+          *ngIf="form.controls.type.touched && form.controls.type.invalid"
+        >
+          <span *ngIf="form.controls.type.errors.required"
+            >This field is mandatory.</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <!-- Notes -->
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label> Notes </mat-label>
+        <textarea matInput formControlName="notes"></textarea>
+        <mat-icon matSuffix>notes</mat-icon>
+      </mat-form-field>
+      <div class="button-container">
+        <button mat-stroked-button color="accent" (click)="cancel()">
+          Cancel
+        </button>
+        <button mat-stroked-button color="primary" type="submit">Save</button>
+      </div>
+    </form>
+  </div>
+</div>

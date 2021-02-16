@@ -1,21 +1,46 @@
-<h1>Base</h1>
+<mat-toolbar color="primary">
+  <button mat-icon-button>
+    <mat-icon>account_balance</mat-icon>
+  </button>
+  <span>AniBank</span>
+  <span class="spacer"></span>
+  <button
+    mat-icon-button
+    *ngIf="user"
+    matTooltip="Add an entry"
+    (click)="addEntry()"
+  >
+    <mat-icon>control_point</mat-icon>
+  </button>
+  <button mat-icon-button *ngIf="user">
+    <img
+      class="avatar avatar-size"
+      [src]="user.photoURL"
+      [matTooltip]="user.displayName"
+      [matMenuTriggerFor]="menu"
+    />
+  </button>
+  <mat-menu #menu="matMenu">
+    <div class="user-info" *ngIf="user">
+      <img class="avatar" [src]="user.photoURL" />
+      <div class="name">{{ user.displayName }}</div>
+      <div class="email">{{ user.email }}</div>
+    </div>
+    <div mat-menu-item class="signout">
+      <button mat-stroked-button (click)="auth.signOut()">
+        <mat-icon>power_settings_new</mat-icon>
+        Sign Out
+      </button>
+    </div>
+  </mat-menu>
+</mat-toolbar>
 
-<p>
-    <a routerLink="/secret">Secret</a>
-</p>
+<div class="spinner" *ngIf="loading"><mat-spinner></mat-spinner></div>
 
-<div *ngIf="auth.user$ | async as user; else login">
-  <pre>
-    {{ user | json }}
-  </pre>
-  
-  <hr>
-  <button class="button" (click)="auth.signOut()">Sign Out</button>
-
+<div class="login-button" *ngIf="!loading && !user">
+  <button mat-stroked-button (click)="auth.googleSignin()">
+    Login with Google
+  </button>
 </div>
-
-<ng-template #login>
-  <button class="button" (click)="auth.googleSignin()">Login with Google</button>
-</ng-template>
 
 <router-outlet></router-outlet>

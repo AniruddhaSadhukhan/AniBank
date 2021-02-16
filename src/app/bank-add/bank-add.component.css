@@ -1,0 +1,13 @@
+.form-field {
+  width: 90vw;
+  margin-left: 5vw;
+}
+.form-field-half {
+  width: 42.5vw;
+  margin-left: 5vw;
+}
+.button-container {
+  justify-content: space-evenly;
+  display: flex;
+  padding-bottom: 20px;
+}

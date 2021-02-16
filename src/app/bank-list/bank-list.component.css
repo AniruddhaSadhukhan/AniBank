@@ -1,0 +1,19 @@
+table {
+  display: block;
+}
+
+.spaceBwButtons {
+  width: 5px;
+}
+.popover-heading {
+  font-size: 1.2rem;
+  text-align: center;
+  color: black;
+}
+.popover-message {
+  padding: 5px;
+}
+.popover-actions {
+  display: flex;
+  justify-content: space-evenly;
+}

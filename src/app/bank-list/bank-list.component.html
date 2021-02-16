@@ -1,0 +1,56 @@
+<div>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container
+      [matColumnDef]="item"
+      *ngFor="let item of displayedColumns; let i = index"
+    >
+      <th mat-header-cell *matHeaderCellDef>{{ labels[i] }}</th>
+      <td mat-cell *matCellDef="let element">
+        {{
+          item == "sDate" || item == "mDate"
+            ? (element[item] | date)
+            : element[item]
+        }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button
+          mat-icon-button
+          (click)="edit(element)"
+          disableRipple
+          class="table-buttons"
+        >
+          <mat-icon>edit</mat-icon>
+        </button>
+        <span class="spaceBwButtons"></span>
+        <button
+          mat-icon-button
+          disableRipple
+          class="table-buttons"
+          [matMenuTriggerFor]="menu"
+        >
+          <mat-icon>delete</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <div class="popover-heading">Delete</div>
+          <div class="popover-message">
+            Are you sure you want to delete this entry?
+          </div>
+          <div class="popover-actions">
+            <button mat-stroked-button color="primary">Cancel</button>
+            <button mat-stroked-button color="warn" (click)="delete(element)">
+              Delete
+            </button>
+          </div>
+        </mat-menu>
+      </td>
+    </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumnsWithActions; sticky: true"
+    ></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumnsWithActions"></tr>
+  </table>
+</div>
