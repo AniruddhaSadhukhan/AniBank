@@ -39,7 +39,7 @@ const AngularMaterial = [
 ];
 
 const config = {
-  apiKey: "AIzaSyBZ45oUgTxi0IOHsB2UYoqe6a93dmvWNzg",
+  apiKey: "<API_key>",
   authDomain: "anibankweb.firebaseapp.com",
   databaseURL: "https://anibankweb.firebaseio.com",
   projectId: "anibankweb",
